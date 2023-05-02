@@ -5,7 +5,7 @@ export default {
     onLoad: () => {
         setTimeout(() => {
             Vendetta.patcher.before("dispatch", Vendetta.metro.common.FluxDispatcher, (args) => {
-                Vendetta.ui.toasts.showToast(args.toString())
+                Vendetta.ui.toasts.showToast(args[0])
             })
         }, 10000)
     },
