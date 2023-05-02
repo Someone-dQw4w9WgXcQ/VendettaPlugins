@@ -8,6 +8,7 @@ export default {
                 const [event] = args
                 if (event.type === "MESSAGE_DELETE") {
                     console.log(event)
+                    Vendetta.ui.toasts.showToast("hello")
                 }
             })
         }, 10000)
