@@ -1,6 +1,6 @@
 node_modules/
 dist/
+vendetta-debug/
 pnpm-lock.yaml
 yarn.lock
 package-lock.json
-vendetta-debug/
