@@ -3,11 +3,12 @@ import Settings from "./Settings";
 
 export default {
     onLoad: () => {
-        Vendetta.ui.toasts.showToast("hi")
-        Vendetta.logger.log("Hello world!");
+        Vendetta.patcher.instead("dispatch", Vendetta.metro.common.FluxDispatcher, (args) => {
+            Vendetta.logger.log(args)
+        })
     },
     onUnload: () => {
-        Vendetta.logger.log("Goodbye, world.");
+        
     },
     settings: Settings,
 }
