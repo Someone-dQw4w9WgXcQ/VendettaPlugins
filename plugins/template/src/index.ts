@@ -7,7 +7,7 @@ export default {
             this.onUnload = Vendetta.patcher.before("dispatch", Vendetta.metro.common.FluxDispatcher, (args) => {
                 const [event] = args
                 if (event.type === "MESSAGE_DELETE") {
-                    Vendetta.ui.toasts.showToast(event.message.content)
+                    Vendetta.logger.log(event)
                 }
             })
         }, 10000)
