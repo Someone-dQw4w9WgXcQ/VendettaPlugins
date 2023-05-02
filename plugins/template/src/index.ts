@@ -1,12 +1,13 @@
-import { logger } from "@vendetta";
+import Vendetta from "@vendetta";
 import Settings from "./Settings";
 
 export default {
     onLoad: () => {
-        logger.log("Hello world!");
+        Vendetta.ui.toasts.showToast("hi")
+        Vendetta.logger.log("Hello world!");
     },
     onUnload: () => {
-        logger.log("Goodbye, world.");
+        Vendetta.logger.log("Goodbye, world.");
     },
     settings: Settings,
 }
