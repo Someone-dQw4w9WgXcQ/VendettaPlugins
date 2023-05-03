@@ -4,15 +4,11 @@ const { FormText } = Forms;
 const storage = Vendetta.plugin.storage
 
 let timeInstalled
-try {
-    if ("timeInstalled" in storage) {
-        timeInstalled = storage.timeInstalled
-    } else {
-        timeInstalled = storage.timeInstalled = Vendetta.metro.common.moment()
-    }
-}
-catch (e) {
-    console.log(e)
+
+if ("timeInstalled" in storage) {
+    timeInstalled = storage.timeInstalled
+} else {
+    timeInstalled = storage.timeInstalled = Vendetta.metro.common.moment().format("hh:mm:ss.SS")
 }
 
 export default () => (
