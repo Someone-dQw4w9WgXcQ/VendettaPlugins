@@ -14,11 +14,23 @@ export default {
                     console.log("create", event.message)
                     data[event.message.id] = event.message
                 } else if (type === "MESSAGE_DELETE") {
-                    console.log(data[event.message.id], "deleted at", Vendetta.metro.common.moment().format("hh:mm:ss.SS"))
-                    args = null
+                    const saved = data[event.message.id]
+                    if (saved) {
+                        console.log(saved, "deleted at", Vendetta.metro.common.moment().format("hh:mm:ss.SS"))
+                        event.message = saved
+                        saved.content += " (deleted)"
+                        data[event.message.id] = null
+                    } else {
+                        console.log("deleted", args)
+                    }
                 } else if (type == "MESSAGE_UPDATE") {
-                    console.log(data[event.message.id], "edited at", event.message.edited_timestamp, "to", event.message)
-                    args = null
+                    const saved = data[event.message.id]
+                    if (saved) {
+                        event.message.content = `${saved}\n${event.message.content}(edited${event.message.edited_timestamp})`
+                    } else {
+                        console.log("edited at", event.message.edited_timestamp, "to", event.message)
+                        event.message.content += ` (edited${event.message.edited_timestamp})`
+                    }
                 }
                 return args
             })
