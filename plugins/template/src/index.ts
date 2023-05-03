@@ -1,7 +1,7 @@
 import Vendetta from "@vendetta";
 import Settings from "./Settings";
 
-const data = Vendetta.plugin.storage
+const data = []
 
 export default {
     onLoad() {
@@ -15,9 +15,12 @@ export default {
                     data[event.message.id] = event.message
                 } else if (type === "MESSAGE_DELETE") {
                     console.log(data[event.message.id], "deleted at", Vendetta.metro.common.moment().format("hh:mm:ss.SS"))
+                    args = null
                 } else if (type == "MESSAGE_UPDATE") {
-                    console.log(data[event.message.id], "edited at", event.message.edited_timestamp, "to", event.message.content)
+                    console.log(data[event.message.id], "edited at", event.message.edited_timestamp, "to", event.message)
+                    args = null
                 }
+                return args
             })
         }, 10000)
     },
