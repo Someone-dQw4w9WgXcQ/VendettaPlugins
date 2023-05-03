@@ -29,7 +29,7 @@ export default {
                         event.message.content = `\`${saved.content}\n${event.message.content} (edited ${event.message.edited_timestamp})\``
                     } else {
                         console.log("edited at", event.message.edited_timestamp, "to", event.message)
-                        event.message.content += ` (edited${event.message.edited_timestamp})`
+                        event.message.content += ` (edited ${event.message.edited_timestamp})`
                     }
                 } else if (type.startsWith("MESSAGE")) {
                     console.log(type)
