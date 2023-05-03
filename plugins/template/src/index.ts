@@ -26,7 +26,7 @@ export default {
                 } else if (type == "MESSAGE_UPDATE") {
                     const saved = data[event.message.id]
                     if (saved) {
-                        event.message.content = `${saved}\n${event.message.content}(edited${event.message.edited_timestamp})`
+                        event.message.content = `${saved.content}\n${event.message.content}(edited${event.message.edited_timestamp})`
                     } else {
                         console.log("edited at", event.message.edited_timestamp, "to", event.message)
                         event.message.content += ` (edited${event.message.edited_timestamp})`
